@@ -5,7 +5,7 @@ import tensorflow as tf
 import plotly.graph_objs as go
 from keras.preprocessing.sequence import TimeseriesGenerator
 
-filename = "stock_data/GME.csv"
+filename = "stock_data/PYPL.csv"
 
 df = pd.read_csv(filename)
 #print(df.info())
@@ -32,7 +32,7 @@ date_test = df['Date'][split:]
 
 look_back = 10
 
-train_generator = TimeseriesGenerator(close_train, close_train, length=look_back, batch_size=10)
+train_generator = TimeseriesGenerator(close_train, close_train, length=look_back, batch_size=20)
 test_generator = TimeseriesGenerator(close_test, close_test, length=look_back, batch_size=1)
 
 from keras.models import Sequential
@@ -78,7 +78,7 @@ trace3 = go.Scatter(
     name='Ground Truth'
 )
 layout = go.Layout(
-    title="Stock",
+    title="PYPL Stock",
     xaxis={'title': "Date"},
     yaxis={'title': "Close"}
 )
